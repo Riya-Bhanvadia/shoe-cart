@@ -1,0 +1,65 @@
+header {
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25)
+  
+}
+/* .nav-sty{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 2px solid black;
+} */
+
+/* Style the navigation menu */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25)
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}
+
+/* Style the cart icon */
+.cart-icon {
+  font-size: 55px;
+  margin-left: 10px;
+  padding-right: 30px;
+}
+
+.cart-icon a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Style the cart icon on hover */
+.cart-icon a:hover {
+  color: #e44d26;
+}
+a {
+  cursor: pointer;
+}
+.wrapper {
+  position: relative;
+}
+
+.wrapper span {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
