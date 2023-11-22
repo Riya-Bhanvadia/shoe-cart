@@ -17,12 +17,12 @@ export const useRegisterData = () => {
   return useMutation(registerData);
 };
 
-export const loginData = (data) => {
+ const loginData = (data) => {
   return axios.post("http://localhost:8080/login", data);
 };
 
 export const useLoginData = () => {
-  return useMutation(registerData);
+  return useMutation(loginData);
 };
 
 const getCategory = () => {
@@ -34,7 +34,7 @@ export const useGetCategory = () => {
 };
 
 const getProducts = (data) => {
-  console.log(data);
+  // console.log(data);
   return axios.get(`http://localhost:8080/products/${data}`);
 };
 
@@ -56,4 +56,12 @@ const updateCart = (data) => {
 };
 export const useUpdateCart = () => {
   return useMutation(updateCart);
+};
+
+const sendResetemail = (data) => {
+  console.log(data);
+  return axios.post("http://localhost:8080/sendmail", data);
+};
+export const useSendResetemail = () => {
+  return useMutation(sendResetemail);
 };

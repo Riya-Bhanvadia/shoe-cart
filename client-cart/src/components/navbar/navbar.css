@@ -1,7 +1,12 @@
 header {
   background-color: white;
   color: black;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25)
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 30px;
+  z-index: 1;
   
 }
 /* .nav-sty{
@@ -15,7 +20,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2px;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25)
+  /* box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25) */
 }
 
 nav ul {
@@ -31,8 +36,8 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: black;
-  font-weight: bold;
-  font-size: large;
+  /* font-weight: bold; */
+  font-size: medium;
 }
 
 /* Style the cart icon */
@@ -44,13 +49,11 @@ nav ul li a {
 
 .cart-icon a {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 /* Style the cart icon on hover */
-.cart-icon a:hover {
-  color: #e44d26;
-}
+
 a {
   cursor: pointer;
 }

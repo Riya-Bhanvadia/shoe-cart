@@ -3,10 +3,26 @@ import DashboardContext from "./dashboardContext";
 
 const DashboardState = (props) => {
   const [product, setProduct] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+
+  const addWishlist = (data) => {
+    console.log(data);
+    const l = wishlist.findIndex((item) => item._id === data._id);
+    console.log(l);
+    if (l === -1) {
+      setWishlist([...wishlist, data]);
+      console.log(wishlist);
+    } else {
+      const copyList = wishlist;
+      const d = copyList.filter((item) => item._id !== data._id);
+      setWishlist(d);
+    }
+  };
 
   const addProduct = (data) => {
     console.log(data);
     const l = product.findIndex((item) => item._id === data._id);
+    console.log(l);
     if (l === -1) {
       setProduct([...product, { ...data, quantity: 1 }]);
       return true;
@@ -46,6 +62,7 @@ const DashboardState = (props) => {
     const l = product.filter((obj) => obj._id !== data._id);
     setProduct([...l]);
   };
+  const totalItems = product.reduce((a, b) => a + b.quantity, 0)
 
   return (
     <DashboardContext.Provider
@@ -57,6 +74,9 @@ const DashboardState = (props) => {
         removeElements,
         removeItem,
         setingProduct,
+        addWishlist,
+        wishlist,
+        totalItems
       }}
     >
       {props.children}

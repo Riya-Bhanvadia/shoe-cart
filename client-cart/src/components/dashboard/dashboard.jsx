@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./dashboard.css";
 import { useGetCategory } from "../../hooks/hooks";
 import SearchProduct from "../search/searchProduct";
 import DashboardPage from "../../pages/dashboardpage/dashboardPage";
@@ -27,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div className="main" style={{ minHeight: "80vh" }}>
-      <SearchProduct changeHandler={setSearch} />
+      <SearchProduct changeHandler={setSearch} product={data.data.data}/>
      <DashboardPage getData={data.data.data} search={search} submitHandler={submitHandler}/>
     </div>
   );

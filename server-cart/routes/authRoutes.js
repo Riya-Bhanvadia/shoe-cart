@@ -1,13 +1,23 @@
-const express = require("express")
-const { registerController, loginController, testController, getRegisterData } = require("../controller/authController")
-const { requireSignin, isAdmin } = require("../middleware/authMiddleware")
-const router = express.Router()
+const express = require("express");
+const {
+  registerController,
+  loginController,
+  testController,
+  getRegisterData,
+  mongoFind,
+} = require("../controller/authController");
+const { requireSignin } = require("../middleware/authMiddleware");
+const { userSchema } = require("../validations/userValidations");
+const validation = require("../middleware/validationMiddleware");
+const router = express.Router();
 
-router.post("/register", registerController)
+router.post("/register",validation(userSchema), registerController);
 // router.get("/register", getRegisterData)
 
-router.post("/login", loginController)
+router.post("/login", validation(userSchema), loginController);
 
-router.get("/test",requireSignin, testController)
+router.get("/test", requireSignin, testController);
 
-module.exports = router
+// router.post("/mongofind", mongoFind)
+
+module.exports = router;

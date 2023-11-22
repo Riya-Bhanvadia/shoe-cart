@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const userModel = require("../model/userModel");
+// const userModel = require("../model/userModel");
 
 exports.requireSignin = (req, res, next) => {
   const bearerHeader = req.get("Authorization");
@@ -26,22 +26,28 @@ exports.requireSignin = (req, res, next) => {
       const error = new Error("jwt verification failed");
       throw error;
     }
-  } 
+  }
 };
 
-exports.isAdmin = async (req, res) => {
+exports.requireResetPwd = async (req, res, next) => {
+  console.log("-----------");
+  const vtoken = req.params.token;
+  console.log(vtoken);
+  // res.redirect("http://localhost:3000/confirmpwd")
+
+  let verify;
+
   try {
-    const user = await userModel.findById(req.user._id);
-    if (user.role !== 1) {
-      res.status(401).send({
-        success: false,
-        message: "Not the admin",
-      });
-    } else {
-      next();
-    }
+    verify = jwt.verify(vtoken, "reset key");
+    console.log(verify.email);
   } catch (error) {
-    console.log(error);
-    res.status(401).send({ success: false });
+    throw error;
+  }
+  if (verify) {
+    console.log("reachedddddddddddd");
+    return await res.redirect(`http://localhost:3000/confirmpwd/${vtoken}/${verify.email}`)
+  } else {
+    const error = new Error("jwt verification failed");
+    throw error;
   }
 };

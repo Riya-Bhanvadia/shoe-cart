@@ -14,8 +14,10 @@ import { useContext, useEffect } from "react";
 import TokenContext from "./components/tokenContext/tokenContext";
 import DashboardContext from "./components/dashboardContext/dashboardContext";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Wishlist from "./components/wishlist/wishlist";
+import ResetPwd from "./components/resetPwd/resetPwd";
+import ConfirmPwd from "./components/confirmPwd/confirmPwd";
 const LazyCart = React.lazy(() => import("./components/cart/cart"));
-
 
 function App() {
   const { token, addToken } = useContext(TokenContext);
@@ -24,14 +26,14 @@ function App() {
 
   const tok = localStorage.getItem("token");
   const id = localStorage.getItem("id");
-  console.log(product);
+  // console.log(product);
   const data = {
     _id: id,
     cart: product,
   };
   useEffect(() => {
     const cart = localStorage.getItem("cart");
-    console.log(cart);
+    // console.log(cart);
     if (cart) {
       const parsedCart = JSON.parse(cart);
       setingProduct(parsedCart);
@@ -51,7 +53,7 @@ function App() {
       window.removeEventListener("beforeunload", console.log("removed"));
     };
   });
-  console.log(token);
+  // console.log(token);
   return (
     <>
       {token ? <Navbar /> : <div></div>}
@@ -61,6 +63,12 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/productsByCat" element={<Products />} />
         <Route path="/randomProducts" element={<RandomProducts />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/resetPwd" element={<ResetPwd />} />
+        <Route
+          path="/confirmpwd/:token/:email"
+          element={<ConfirmPwd/>}
+        />
         <Route
           path="/cart"
           element={
@@ -71,7 +79,7 @@ function App() {
         />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {tok ? <Footer /> : <div></div>}
     </>
   );
 }

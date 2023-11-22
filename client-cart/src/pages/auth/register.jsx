@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import { useGetRegisterData, useRegisterData } from "../../hooks/hooks";
+// import { ToastContainer, toast } from "react-toastify";
+import {  useRegisterData } from "../../hooks/hooks";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
@@ -57,20 +57,20 @@ const Register = () => {
   };
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+    <section className="vh-117" style={{ backgroundColor: "#eee" }}>
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11 register">
             <div className="card text-black" style={{ borderRadius: "25px" }}>
-              <div className="card-body p-md-5">
+              <div className="card-body p-md-2">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                    <p className="text-center h1 fw-bold mb-2 mx-1 mx-md-4 ">
                       Sign up
                     </p>
 
                     <form onSubmit={handleClick}>
-                      <div className="d-flex flex-row align-items-center mb-4">
+                      <div className="d-flex flex-row align-items-center mb-2">
                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
                           <input
@@ -160,7 +160,7 @@ const Register = () => {
                         </div>
                       </div>
 
-                      <div className="form-check d-flex justify-content-center mb-5">
+                      <div className="form-check d-flex justify-content-center m2-5">
                         <input
                           className="form-check-input me-2"
                           type="checkbox"
@@ -172,12 +172,12 @@ const Register = () => {
                           className="form-check-label"
                           htmlFor="form2Example3"
                         >
-                          I agree all statements in{" "}
-                          <a href="#!">Terms of service</a>
+                          I agree all statements in<br/>
+                          Terms of service
                         </label>
                       </div>
 
-                      <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <div className="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
                         <button
                           type="submit"
                           className="btn btn-primary btn-lg"
@@ -191,7 +191,7 @@ const Register = () => {
                     <img
                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                       className="img-fluid"
-                      alt="Sample image"
+                      alt="Sample"
                     />
                   </div>
                 </div>

@@ -1,0 +1,34 @@
+
+ /* .main{
+    display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #e3f0ff, #fafcff);
+  
+}  */
+.main-sub{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    /* background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF); */
+    z-index: 0;
+    margin-bottom: 20px;
+}
+
+
+
+
+ .productImg {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  filter: blur(3px);
+  -webkit-filter: blur(2px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+}
