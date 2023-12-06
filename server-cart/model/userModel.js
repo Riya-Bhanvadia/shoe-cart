@@ -39,7 +39,7 @@ const user = new schema(
         },
       },
     ],
-    attendance: [],
+
   },
   { timestamps: true }
 );

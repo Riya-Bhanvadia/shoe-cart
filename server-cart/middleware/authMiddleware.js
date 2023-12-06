@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 
 exports.requireSignin = (req, res, next) => {
   const bearerHeader = req.get("Authorization");
-  console.log(bearerHeader);
+  // console.log(bearerHeader);
+  console.log(req.headers["authorization"]);
   if (!bearerHeader) {
     const error = new Error("No authorization header found");
     throw error;

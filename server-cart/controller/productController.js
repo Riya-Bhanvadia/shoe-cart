@@ -1,6 +1,5 @@
 const Product = require("../model/productCategoryModel");
 
-
 exports.createProduct = async (req, res, next) => {
   const { category, imgUrl, name, price, prodImg } = req.body;
   try {
@@ -24,7 +23,7 @@ exports.createProduct = async (req, res, next) => {
 exports.getCategory = async (req, res, next) => {
   try {
     const data = await Product.find();
-    res.json({ data });
+    return res.json({ data });
   } catch (error) {
     console.log(error);
   }
@@ -41,23 +40,53 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
-exports.findProducts = async (req,res,next) => {
+exports.findProducts = async (req, res, next) => {
   try {
-    const data = await Product.find()
+    const data = await Product.find();
     // console.log(data);
-    res.json(data)
+    res.json(data);
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 exports.addProducts = async (req, res, next) => {
   const { name, price, prodImg, id } = req.body;
   try {
-    const data = await Product.findOneAndUpdate({_id:id}, {
-      $push: { products: { name: name, price: price, prodImg: prodImg } },
-    });
+    const data = await Product.findOneAndUpdate(
+      { _id: id },
+      {
+        $push: { products: { name: name, price: price, prodImg: prodImg } },
+      }
+    );
     return res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.findCategoryAndAdd = async (req, res, next) => {
+  const { name, price, imageurl, category } = req.body;
+  try {
+    const result = await Product.findOneAndUpdate(
+      { category: category },
+      { $push: { products: { name: name, price: price, prodImg: imageurl } } }
+    );
+    return res.json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.addCategory = async (req, res, next) => {
+  const { name, imageurl } = req.body;
+  try {
+    const result = await Product.create({
+      category: name,
+      imgUrl: imageurl,
+      products: [],
+    });
+    return res.json(result);
   } catch (error) {
     console.log(error);
   }

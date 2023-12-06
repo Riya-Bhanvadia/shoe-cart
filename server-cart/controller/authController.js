@@ -1,6 +1,5 @@
 const userModel = require("../model/userModel.js");
-const Product = require("../model/productCategoryModel");
-// const Attendance = require("../model/attendanceModel.js");
+// const Product = require("../model/productCategoryModel");
 const { hashPassword, comparePassword } = require("../helpers/authHelper.js");
 const JWT = require("jsonwebtoken");
 
@@ -31,7 +30,6 @@ exports.registerController = async (req, res, next) => {
         error.statusCode = 404;
         throw error;
 
-        // return res.send({ message: "Already Registered", success: false });
       }
 
       const user = await userModel.create({
@@ -39,12 +37,7 @@ exports.registerController = async (req, res, next) => {
         email,
         password: hashedPassword,
       });
-      // console.log(user._id);
-      // const attendence = await Attendance.create({
-      //   userId: user._id,
-      //   attend: [],
-      // });
-      // console.log(attendence);
+    
       res.status(201).send({
         success: true,
         message: "successfully registered",
@@ -67,9 +60,7 @@ exports.loginController = async (req, res, next) => {
       const error = new Error("invalid email or password");
       error.statusCode = 404;
       throw error;
-      // return res
-      //   .status(404)
-      //   .send({ success: false, message: "Invalid email or password" });
+   
     }
     const dates = new Date().toLocaleDateString();
 
@@ -78,9 +69,7 @@ exports.loginController = async (req, res, next) => {
       { email },
       { $addToSet: { attendance: dates } }
     );
-    // console.log(status);
-    // const user = await userModel.findOne({ email },{email:1,password:1});
-    // console.log(user);
+ 
     if (!user) {
       const error = new Error("Invalid Email");
       error.statusCode = 404;
@@ -114,18 +103,3 @@ exports.testController = (req, res) => {
   res.send("Protected route");
 };
 
-// exports.mongoFind = async (req, res, next) => {
-
-//   try {
-//     const data = await userModel.find({}, { attendance: 1, _id: 1 });
-
-//     for (let i = 0; i < data.length; i++) {
-//       await Attendance.findOneAndUpdate(
-//         { userId: data[i]._id },
-//         { $push: { attend: data[i].attendance } }
-//       );
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

@@ -14,7 +14,7 @@ const Login = () => {
   const { setingProduct } = useContext(DashboardContext);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  console.log(token);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -27,15 +27,15 @@ const Login = () => {
       axios
         .post("http://localhost:8080/login", user)
         .then((data) => {
-          console.log(data.data.user.cart);
+      
+          localStorage.setItem("role",data.data.user.role)
           localStorage.setItem("token", data.data.token);
           addToken(data.data.token);
           setingProduct(data.data.user.cart);
           localStorage.setItem("id", data.data.user._id);
 
           localStorage.setItem("name", data.data.user.name);
-          console.log(data.data.user.email);
-          console.log(email);
+         
 
           navigate("/");
         })

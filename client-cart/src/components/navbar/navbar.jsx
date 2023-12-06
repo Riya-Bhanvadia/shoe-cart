@@ -9,6 +9,8 @@ import "./navbar.css";
 const Navbar = () => {
   const { addToken } = useContext(TokenContext);
   const { setingProduct, product, totalItems } = useContext(DashboardContext);
+  const role = localStorage.getItem("role");
+  console.log(typeof role);
   // console.log(product);
   const { mutate } = useUpdateCart();
   const id = localStorage.getItem("id");
@@ -16,6 +18,12 @@ const Navbar = () => {
   // console.log(uname);
   const navigate = useNavigate();
 
+  const handleProduct = () => {
+    navigate("/addProd");
+  };
+  const handleCategory = () => {
+    navigate("/addCategory");
+  };
 
   const handleLogout = () => {
     mutate({ _id: id, cart: product });
@@ -47,6 +55,18 @@ const Navbar = () => {
           <li onClick={handleLogout}>
             <Link>Logout</Link>
           </li>
+          {role === "true" ? (
+            <>
+              <li onClick={handleProduct}>
+                <Link>Add Product</Link>
+              </li>
+              <li onClick={handleCategory}>
+                <Link>Add Category</Link>
+              </li>
+            </>
+          ) : (
+            <div></div>
+          )}
 
           <li>{uname}</li>
         </ul>
@@ -54,7 +74,12 @@ const Navbar = () => {
           <NavLink to={"/cart"}>
             <i className="fas fa-shopping-cart">
               <BsFillCartCheckFill
-                style={{ width: "30px", height: "30px", color: "blue", marginBottom:"20px" }}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  color: "blue",
+                  marginBottom: "20px",
+                }}
               />
             </i>
             <div style={{ position: "relative", bottom: "60px" }}>

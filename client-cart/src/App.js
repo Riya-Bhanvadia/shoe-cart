@@ -17,6 +17,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Wishlist from "./components/wishlist/wishlist";
 import ResetPwd from "./components/resetPwd/resetPwd";
 import ConfirmPwd from "./components/confirmPwd/confirmPwd";
+import AddProd from "./components/admin-add-prod/addProd";
+import AddCategory from "./components/admin-add-prod/addCategory";
 const LazyCart = React.lazy(() => import("./components/cart/cart"));
 
 function App() {
@@ -65,10 +67,9 @@ function App() {
         <Route path="/randomProducts" element={<RandomProducts />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/resetPwd" element={<ResetPwd />} />
-        <Route
-          path="/confirmpwd/:token/:email"
-          element={<ConfirmPwd/>}
-        />
+        <Route path="/addProd" element={<AddProd />} />
+        <Route path="/addCategory" element={<AddCategory />} />
+        <Route path="/confirmpwd/:token/:email" element={<ConfirmPwd />} />
         <Route
           path="/cart"
           element={
